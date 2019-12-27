@@ -1,0 +1,12 @@
+<div class="container" >
+    <div class="jumbotron">Which Team Would you Like to know about...</div>
+    <div class=" row row-md-2">
+        <a class="btn btn-primary" style="float: right;" href="/AddTeam">+ Add New Team</a>
+    </div>
+    <hr><hr>
+
+    <div class="item" *ngFor="let teamDetail of teamDetails; let i = index">
+        <a href="/AboutTeam" > <img  onerror="this.onerror=null;this.src = '../../assets/noImageAvailable.jpg';"   src={{teamDetail.teamImagePath}} alt=""></a>
+        <span class="caption">{{teamDetail.teamAbbrevation}}</span>
+    </div>
+</div>

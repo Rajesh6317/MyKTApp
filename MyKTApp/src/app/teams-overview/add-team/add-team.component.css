@@ -1,0 +1,11 @@
+
+div.jumbotron{
+    font-size: xx-large;
+    background-color:skyblue;
+    font-weight: bolder;
+    font-family: cursive;
+}
+
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 250px !important;
+}

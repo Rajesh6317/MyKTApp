@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* body{
+    margin:0;
+}
+nav a.active{
+background-color: lightcoral;
+font-weight: bolder;
+} */
+
+.ck-editor__editable_inline {
+    min-height: 400px !important;
+}

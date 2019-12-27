@@ -1,0 +1,33 @@
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+
+div.item {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 350px;
+    height: 350px;
+    background-color:transparent;
+    }
+
+img {
+    width: 200px;
+    height: 200px;  
+    border-radius: 50%;
+    border: medium solid green;
+}
+.caption {
+    display: block;
+    font-size: x-large;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+div.item img:hover {
+    opacity: .5;
+} 
+div.jumbotron{
+    font-size: xx-large;
+    background-color:skyblue;
+    font-weight: bolder;
+    font-family: cursive;
+}

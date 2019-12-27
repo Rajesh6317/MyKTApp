@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="jumbotron">
+        Please Fill in your Team Details...
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="teamFullName">Team Name</label>
+            <input type="text" class="form-control" id="teamFullName" placeholder="Example: FNOL, Desktop & Utilities">
+            <small id="teamFullNameHelp" class="form-text text-muted">Please Enter your Team's Full Name</small>
+        </div>
+        <div class="form-group">
+            <label for="teamAbbreviatedName">Team's Short Name</label>
+            <input type="text" class="form-control" id="teamAbbreviatedName" placeholder="Example: FUNDU">
+            <small id="teamAbbreviatedNameHelp" class="form-text text-muted">Please Enter your Team's Abbreviated Name</small>
+        </div>
+        <div class="form-group">
+                <label for="teamLogo">Add Your Team's Logo</label><br>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <img style="width: 200px; height: 200px; border-radius: 50%; border: medium solid green" src={{teamDefaultLogo}}>
+                      </div>
+                <div class="col-md-4" style="margin-top: 75px;"><input type="file" accept="image/*" > </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="TeamDescription">Tell us about your Team</label><br>
+            <ckeditor [editor]="Editor" [config]="editorConfig" placeholder="Hi"></ckeditor>
+        </div>
+        <br>
+        <div class="form-group" style="float: right;">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>  
+</div>

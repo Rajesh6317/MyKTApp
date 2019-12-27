@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="jumbotron">
+        Please Fill in your Team Details
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="teamFullName">Team Name</label>
+            <input type="text" class="form-control" id="teamFullName" placeholder="Example: FNOL, Desktop & Utilities">
+            <small id="teamFullNameHelp" class="form-text text-muted">Please Enter your Team's Full Name</small>
+        </div>
+        <div class="form-group">
+            <label for="teamAbbreviatedName">Team's Short Name</label>
+            <input type="text" class="form-control" id="teamAbbreviatedName" placeholder="FUNDU">
+            <small id="teamAbbreviatedNameHelp" class="form-text text-muted">Please Enter your Team's Abbreviated Name</small>
+        </div>
+        <div id="editor"></div>
+        <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>   
+</div>
