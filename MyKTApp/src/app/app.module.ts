@@ -11,7 +11,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
-import { CKEditorModule }from '@ckeditor/ckeditor5-angular';
+import { FormsModule} from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
+
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { CKEditorModule }from '@ckeditor/ckeditor5-angular';
     MatListModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    CKEditorModule
+    FormsModule,
+    HttpClientModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -39,9 +44,9 @@ export class AppModule {
  }
  export class TeamDetails{
    constructor(
-     public teamID : number,
-     public teamName : string,
-     public teamAbbrevation : string,
-     public teamDescription : string,
-     public teamImagePath : string){}
+     public TEAM_ID : number,
+     public TEAM_FULL_NAME : string,
+     public TEAM_ABBREVIATED_NAME : string,
+     public TEAM_DESCRIPTION : string,
+     public TEAM_LOGO_PATH : string){}
  }

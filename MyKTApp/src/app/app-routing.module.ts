@@ -9,8 +9,8 @@ const routes: Routes = [
     {path:'', redirectTo:'/Home', pathMatch:'full'},
     {path:'Home', component:HomeAboutComponent},
     {path:'TeamsOverview', component:TeamsOverviewComponent},
-    {path:'AboutTeam', component:AboutTeamComponent},
-    {path:'AddTeam', component:AddTeamComponent}
+    {path:'AboutTeam/:id', component:AboutTeamComponent},
+    {path:'AddTeam', component:AddTeamComponent},
 ];
 
 @NgModule({

@@ -9,3 +9,7 @@ div.jumbotron{
 :host ::ng-deep .ck-editor__editable_inline {
     min-height: 250px !important;
 }
+
+img{
+    width: 200px; height: 200px; border-radius: 50%; border: medium solid green;
+}

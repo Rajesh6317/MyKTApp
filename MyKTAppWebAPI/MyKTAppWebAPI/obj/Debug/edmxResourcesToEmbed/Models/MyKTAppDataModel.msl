@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyKTAppDBModelStoreContainer" CdmEntityContainer="MyKTAppDB">
+    <EntitySetMapping Name="TEAMs">
+      <EntityTypeMapping TypeName="MyKTAppDBModel.TEAM">
+        <MappingFragment StoreEntitySet="TEAM">
+          <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
+          <ScalarProperty Name="TEAM_FULL_NAME" ColumnName="TEAM_FULL_NAME" />
+          <ScalarProperty Name="TEAM_ABBREVIATED_NAME" ColumnName="TEAM_ABBREVIATED_NAME" />
+          <ScalarProperty Name="TEAM_LOGO_PATH" ColumnName="TEAM_LOGO_PATH" />
+          <ScalarProperty Name="TEAM_DESCRIPTION" ColumnName="TEAM_DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
