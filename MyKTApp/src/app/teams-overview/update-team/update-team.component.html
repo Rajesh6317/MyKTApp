@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="jumbotron">
+        Update Team Details...
+    </div>
+    <form #teamForm = ngForm (ngSubmit)="onSave(teamFullName,teamAbbreviatedName,teamLogo, TeamDescription)">
+        <div class="form-group">
+            <label for="teamFullName">Team Name</label>
+            <input #teamFullName ngModel type="text" class="form-control" id="teamFullName" name="teamFullName" value="{{aboutTeam.TEAM_FULL_NAME}}">
+            <small id="teamFullNameHelp" class="form-text text-muted">Please Enter your Team's Full Name</small>
+        </div>
+        <div class="form-group">
+            <label for="teamAbbreviatedName">Team's Short Name</label>
+            <input #teamAbbreviatedName ngModel type="text" class="form-control" id="teamAbbreviatedName" name="teamAbbreviatedName" value="{{aboutTeam.TEAM_ABBREVIATED_NAME}}" >
+            <small id="teamAbbreviatedNameHelp" class="form-text text-muted">Please Enter your Team's Abbreviated Name</small>
+        </div>
+        <div class="form-group">
+                <label for="teamLogo">Add Your Team's Logo</label><br>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <img [src]='imagePath + aboutTeam.TEAM_LOGO_PATH' onerror="this.onerror=null;this.src = '../../../assets/TeamImages/default-team-logo.png';">
+                      </div>
+                <div class="col-md-4" style="margin-top: 75px;">
+                    <input #teamLogo type="file" accept="image/*" (change)="previewTeamLogo($event.target.files)" > 
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="TeamDescription">Tell us about your Team</label><br>
+            <editor id="teamDescription" #TeamDescription [init]="tinymceInit" initialValue="{{aboutTeam.TEAM_DESCRIPTION}}"></editor>
+        </div>
+        <br>
+        <div class="form-group" style="float: right;">
+            <button type="submit" class="btn btn-primary">Save Team Changes</button>
+        </div>
+      </form>  
+</div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamDetails } from '../app.module';
 import { MyKTAppServiceService } from 'src/app/shared/my-ktapp-service.service';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-teams-overview',
   templateUrl: './teams-overview.component.html',

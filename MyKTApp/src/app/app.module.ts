@@ -15,13 +15,15 @@ import { FormsModule} from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { UpdateTeamComponent } from './teams-overview/update-team/update-team.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
     AppHeaderComponent,
-    routingComponents
+    routingComponents,
+    UpdateTeamComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { TeamsOverviewComponent } from './teams-overview/teams-overview.componen
 import { AboutTeamComponent } from './teams-overview/about-team/about-team.component';
 import { AddTeamComponent } from './teams-overview/add-team/add-team.component';
 import { HomeAboutComponent } from './home-about/home-about.component';
+import { UpdateTeamComponent } from './teams-overview/update-team/update-team.component';
 
 const routes: Routes = [
     {path:'', redirectTo:'/Home', pathMatch:'full'},
@@ -11,6 +12,7 @@ const routes: Routes = [
     {path:'TeamsOverview', component:TeamsOverviewComponent},
     {path:'AboutTeam/:id', component:AboutTeamComponent},
     {path:'AddTeam', component:AddTeamComponent},
+    {path:'UpdateTeam/:id', component:UpdateTeamComponent},
 ];
 
 @NgModule({
@@ -19,4 +21,9 @@ exports:[RouterModule]
 })
 
 export class AppRoutingModule{}
-export const routingComponents = [HomeAboutComponent,TeamsOverviewComponent,AboutTeamComponent,AddTeamComponent]
+export const routingComponents = [
+    HomeAboutComponent,
+    TeamsOverviewComponent,
+    AboutTeamComponent,
+    AddTeamComponent,
+    UpdateTeamComponent]
