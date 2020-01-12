@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="jumbotron">
+        Update Claims Overview...
+    </div>
+    <form #claimsOverview = ngForm (ngSubmit)="saveDetails(Description)">
+        <div class="form-group">
+            <editor id="teamDescription" #Description [init]="tinymceInit" initialValue=""></editor>
+        </div>
+        <hr>
+        <div class="form-group">
+            <div class="row">
+                <label for="UploadDocuments">Manage Documents for Claims Overview</label>
+                <label class="btn btn-success" style="float:right"> + Add New Document <input type="file" (change)="uploadDocument($event.target.files)" hidden> </label><br><br>
+            </div>
+            <div >
+                <div class="row" *ngFor="let doc of documentList">
+                    <!-- <div class="col col-md-2">
+                        <label class="btn btn-warning" style="background-color:lightseagreen">Add/Replace Document : <input type="file" (change)="displayFile($event.target.files)" hidden></label>
+                    </div> -->
+                    <div class="col col-md-11">
+                        <input type="text" disabled="true" class="form-control" [value]="doc">
+                    </div>
+                    <div class="col col-md-1">
+                        <a class="btn btn-danger" (click)="removeFile(doc)">X</a>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <a href="/ClaimsOverview" class="btn btn-warning" style="float: left;"> &laquo; Back</a>
+            <button type="submit" class="btn btn-primary" style="float: right;">Save Details</button>
+        </div>
+    </form>
+</div>

@@ -4,22 +4,51 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MyKTAppDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MyKTAppDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CONTENT">
+          <Key>
+            <PropertyRef Name="CONTENT_ID" />
+          </Key>
+          <Property Name="CONTENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEAM_ID" Type="int" />
+          <Property Name="CONTENT_TYPE" Type="varchar" MaxLength="50" />
+          <Property Name="CONTENT_DESCRIPTION" Type="varchar(max)" />
+          <Property Name="CONTENT_DOCUMENTS" Type="varchar" MaxLength="1000" />
+          <Property Name="UPDATED_BY" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="TEAM">
           <Key>
             <PropertyRef Name="TEAM_ID" />
           </Key>
           <Property Name="TEAM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TEAM_FULL_NAME" Type="varchar" MaxLength="50" />
-          <Property Name="TEAM_ABBREVIATED_NAME" Type="varchar" MaxLength="50" />
-          <Property Name="TEAM_LOGO_PATH" Type="varchar" MaxLength="50" />
-          <Property Name="TEAM_DESCRIPTION" Type="varchar" MaxLength="50" />
+          <Property Name="TEAM_ABBREVIATED_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="TEAM_LOGO_PATH" Type="varchar" MaxLength="500" />
+          <Property Name="TEAM_DESCRIPTION" Type="varchar(max)" />
+          <Property Name="TEAM_KT_PLAN_PATH" Type="varchar" MaxLength="500" />
+          <Property Name="UPDATED_BY" Type="varchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_CONTENT_CONTENT">
+          <End Role="CONTENT" Type="Self.CONTENT" Multiplicity="1" />
+          <End Role="CONTENT1" Type="Self.CONTENT" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CONTENT">
+              <PropertyRef Name="CONTENT_ID" />
+            </Principal>
+            <Dependent Role="CONTENT1">
+              <PropertyRef Name="CONTENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MyKTAppDBModelStoreContainer">
+          <EntitySet Name="CONTENT" EntityType="Self.CONTENT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEAM" EntityType="Self.TEAM" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CONTENT_CONTENT" Association="Self.FK_CONTENT_CONTENT">
+            <End Role="CONTENT" EntitySet="CONTENT" />
+            <End Role="CONTENT1" EntitySet="CONTENT" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyKTAppDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -29,13 +58,45 @@
           </Key>
           <Property Name="TEAM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TEAM_FULL_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TEAM_ABBREVIATED_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TEAM_LOGO_PATH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TEAM_DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TEAM_ABBREVIATED_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TEAM_LOGO_PATH" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TEAM_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TEAM_KT_PLAN_PATH" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="MyKTAppDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TEAMs" EntityType="Self.TEAM" />
+          <EntitySet Name="CONTENTs" EntityType="MyKTAppDBModel.CONTENT" />
+          <AssociationSet Name="FK_CONTENT_CONTENT" Association="MyKTAppDBModel.FK_CONTENT_CONTENT">
+            <End Role="CONTENT" EntitySet="CONTENTs" />
+            <End Role="CONTENT1" EntitySet="CONTENTs" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="CONTENT">
+          <Key>
+            <PropertyRef Name="CONTENT_ID" />
+          </Key>
+          <Property Name="CONTENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEAM_ID" Type="Int32" />
+          <Property Name="CONTENT_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CONTENT_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CONTENT_DOCUMENTS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CONTENT1" Relationship="MyKTAppDBModel.FK_CONTENT_CONTENT" FromRole="CONTENT" ToRole="CONTENT1" />
+          <NavigationProperty Name="CONTENT2" Relationship="MyKTAppDBModel.FK_CONTENT_CONTENT" FromRole="CONTENT1" ToRole="CONTENT" />
+        </EntityType>
+        <Association Name="FK_CONTENT_CONTENT">
+          <End Type="MyKTAppDBModel.CONTENT" Role="CONTENT" Multiplicity="1" />
+          <End Type="MyKTAppDBModel.CONTENT" Role="CONTENT1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CONTENT">
+              <PropertyRef Name="CONTENT_ID" />
+            </Principal>
+            <Dependent Role="CONTENT1">
+              <PropertyRef Name="CONTENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -45,11 +106,25 @@
           <EntitySetMapping Name="TEAMs">
             <EntityTypeMapping TypeName="MyKTAppDBModel.TEAM">
               <MappingFragment StoreEntitySet="TEAM">
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="TEAM_KT_PLAN_PATH" ColumnName="TEAM_KT_PLAN_PATH" />
                 <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
                 <ScalarProperty Name="TEAM_FULL_NAME" ColumnName="TEAM_FULL_NAME" />
                 <ScalarProperty Name="TEAM_ABBREVIATED_NAME" ColumnName="TEAM_ABBREVIATED_NAME" />
                 <ScalarProperty Name="TEAM_LOGO_PATH" ColumnName="TEAM_LOGO_PATH" />
                 <ScalarProperty Name="TEAM_DESCRIPTION" ColumnName="TEAM_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTENTs">
+            <EntityTypeMapping TypeName="MyKTAppDBModel.CONTENT">
+              <MappingFragment StoreEntitySet="CONTENT">
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="CONTENT_DOCUMENTS" ColumnName="CONTENT_DOCUMENTS" />
+                <ScalarProperty Name="CONTENT_DESCRIPTION" ColumnName="CONTENT_DESCRIPTION" />
+                <ScalarProperty Name="CONTENT_TYPE" ColumnName="CONTENT_TYPE" />
+                <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
+                <ScalarProperty Name="CONTENT_ID" ColumnName="CONTENT_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

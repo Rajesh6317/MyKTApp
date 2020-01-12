@@ -1,16 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MyKTAppDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CONTENT">
+    <Key>
+      <PropertyRef Name="CONTENT_ID" />
+    </Key>
+    <Property Name="CONTENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TEAM_ID" Type="int" />
+    <Property Name="CONTENT_TYPE" Type="varchar" MaxLength="50" />
+    <Property Name="CONTENT_DESCRIPTION" Type="varchar(max)" />
+    <Property Name="CONTENT_DOCUMENTS" Type="varchar" MaxLength="1000" />
+    <Property Name="UPDATED_BY" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="TEAM">
     <Key>
       <PropertyRef Name="TEAM_ID" />
     </Key>
     <Property Name="TEAM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TEAM_FULL_NAME" Type="varchar" MaxLength="50" />
-    <Property Name="TEAM_ABBREVIATED_NAME" Type="varchar" MaxLength="50" />
-    <Property Name="TEAM_LOGO_PATH" Type="varchar" MaxLength="50" />
-    <Property Name="TEAM_DESCRIPTION" Type="varchar" MaxLength="50" />
+    <Property Name="TEAM_ABBREVIATED_NAME" Type="varchar" MaxLength="20" />
+    <Property Name="TEAM_LOGO_PATH" Type="varchar" MaxLength="500" />
+    <Property Name="TEAM_DESCRIPTION" Type="varchar(max)" />
+    <Property Name="TEAM_KT_PLAN_PATH" Type="varchar" MaxLength="500" />
+    <Property Name="UPDATED_BY" Type="varchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK_CONTENT_CONTENT">
+    <End Role="CONTENT" Type="Self.CONTENT" Multiplicity="1" />
+    <End Role="CONTENT1" Type="Self.CONTENT" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CONTENT">
+        <PropertyRef Name="CONTENT_ID" />
+      </Principal>
+      <Dependent Role="CONTENT1">
+        <PropertyRef Name="CONTENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="MyKTAppDBModelStoreContainer">
+    <EntitySet Name="CONTENT" EntityType="Self.CONTENT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TEAM" EntityType="Self.TEAM" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CONTENT_CONTENT" Association="Self.FK_CONTENT_CONTENT">
+      <End Role="CONTENT" EntitySet="CONTENT" />
+      <End Role="CONTENT1" EntitySet="CONTENT" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -27,6 +27,7 @@
     "@ckeditor/ckeditor5-upload": "^16.0.0",
     "@tinymce/tinymce-angular": "^3.3.1",
     "bootstrap": "^3.4.1",
+    "ngx-webstorage": "^4.0.1",
     "rxjs": "~6.4.0",
     "tinymce": "^5.1.5",
     "tslib": "^1.10.0",

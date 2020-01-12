@@ -2,7 +2,7 @@
     <div class="jumbotron">Which Team Would you Like to know about...</div>
     <hr>
     <div class="item" *ngFor="let teamDetail of getTeamsService.listTeams; let i = index" (click)="AboutTeam(teamDetail)">
-        <a> <img  onerror="this.onerror=null;this.src = '../../assets/noImageAvailable.jpg';"   src="http://localhost:49355/MyKTAppWebAPI/Images/TeamLogo/{{teamDetail.TEAM_LOGO_PATH}}" alt=""></a>
+        <a> <img  onerror="this.onerror=null;this.src = '../../assets/noImageAvailable.jpg';"   src="http://localhost:49355/MyKTAppWebAPI/Common/Images/TeamLogo/{{teamDetail.TEAM_LOGO_PATH}}" alt=""></a>
         <span class="caption">{{teamDetail.TEAM_ABBREVIATED_NAME}}</span>
     </div>
     <hr>    

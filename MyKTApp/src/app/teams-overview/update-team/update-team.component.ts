@@ -8,9 +8,12 @@ import { MyKTAppServiceService } from 'src/app/shared/my-ktapp-service.service';
   styleUrls: ['./update-team.component.css']
 })
 export class UpdateTeamComponent implements OnInit {
-  public imagePath = "http://localhost:49355/MyKTAppWebAPI/Images/TeamLogo/";
+  public imagePath = "http://localhost:49355/MyKTAppWebAPI/Common/Images/TeamLogo/";
   public uploadedLogo : File = null;
   public aboutTeam;
+  public KTPlanName : string;
+  public hideKTPlanName : boolean = true;
+  public KTPlan :File = null;
 
   constructor(private routeId :ActivatedRoute, private getTeamsService: MyKTAppServiceService) { }
 
@@ -19,9 +22,24 @@ export class UpdateTeamComponent implements OnInit {
     this.getTeamsService.getTeam(id)
     .then(data => {
       this.aboutTeam = data;
+      if(data.TEAM_KT_PLAN_PATH != null){
+        this.KTPlanName = data.TEAM_KT_PLAN_PATH;
+        this.hideKTPlanName = false;
+      }
     });
   }
+
+  public ngDoCheck() {
+    
+  }
   
+  public displayFile(file:FileList){
+    this.KTPlan = file.item(0);
+    this.KTPlanName = this.KTPlan.name;
+    this.hideKTPlanName = false;
+  }
+
+
   public tinymceInit = {
     branding: false,
       width: "100%",
@@ -83,4 +101,11 @@ export class UpdateTeamComponent implements OnInit {
     reader.readAsDataURL(this.uploadedLogo);
   }
 
+  public onUpdate(teamFullName, teamAbbreviatedName, teamLogo, teamDescription){
+    const description = teamDescription._editor.contentDocument.activeElement.innerHTML ;
+    this.getTeamsService.updateTeam(this.aboutTeam.TEAM_ID,teamFullName.value,teamAbbreviatedName.value,this.uploadedLogo,description, this.KTPlan)
+    .subscribe( data => {alert('Team Details Updated Successfully');
+    window.location.href = '/AboutTeam/'+this.aboutTeam.TEAM_ID;
+  });
+  }
 }

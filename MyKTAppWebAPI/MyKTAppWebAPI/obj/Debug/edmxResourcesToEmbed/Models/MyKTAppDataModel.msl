@@ -4,11 +4,25 @@
     <EntitySetMapping Name="TEAMs">
       <EntityTypeMapping TypeName="MyKTAppDBModel.TEAM">
         <MappingFragment StoreEntitySet="TEAM">
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="TEAM_KT_PLAN_PATH" ColumnName="TEAM_KT_PLAN_PATH" />
           <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
           <ScalarProperty Name="TEAM_FULL_NAME" ColumnName="TEAM_FULL_NAME" />
           <ScalarProperty Name="TEAM_ABBREVIATED_NAME" ColumnName="TEAM_ABBREVIATED_NAME" />
           <ScalarProperty Name="TEAM_LOGO_PATH" ColumnName="TEAM_LOGO_PATH" />
           <ScalarProperty Name="TEAM_DESCRIPTION" ColumnName="TEAM_DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTENTs">
+      <EntityTypeMapping TypeName="MyKTAppDBModel.CONTENT">
+        <MappingFragment StoreEntitySet="CONTENT">
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CONTENT_DOCUMENTS" ColumnName="CONTENT_DOCUMENTS" />
+          <ScalarProperty Name="CONTENT_DESCRIPTION" ColumnName="CONTENT_DESCRIPTION" />
+          <ScalarProperty Name="CONTENT_TYPE" ColumnName="CONTENT_TYPE" />
+          <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
+          <ScalarProperty Name="CONTENT_ID" ColumnName="CONTENT_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

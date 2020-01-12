@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="3c03ed8d0c01454380607902d0951de8" Name="Diagram1">
         <EntityTypeShape EntityType="MyKTAppDBModel.TEAM" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyKTAppDBModel.CONTENT" Width="1.5" PointX="3.375" PointY="0.75" />
+        <AssociationConnector Association="MyKTAppDBModel.FK_CONTENT_CONTENT" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

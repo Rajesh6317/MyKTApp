@@ -31,8 +31,29 @@
             <editor id="teamDescription" #TeamDescription [init]="tinymceInit"></editor>
         </div>
         <br>
-        <div class="form-group" style="float: right;">
-            <button type="submit" class="btn btn-primary">Save Team</button>
+        <hr>
+        <div class="form-group">
+            <div class="row">
+                <label for="KTPlan">Upload your Team's KT Plan for learning about components sequentially</label>
+                <label class="btn btn-default card-title" style="float:right">
+                    + Upload KT Plan <input type="file" (change)="displayFile($event.target.files)" hidden>
+                </label><br><br>  
+            </div>
+            <div class="row" [hidden]="hideKTPlanName">
+                <div class="form-group">
+                    <div class="col col-md-2">
+                        <h4>File Name :</h4>
+                    </div>
+                    <div class="col col-md-10">
+                        <input type="text" disabled="true" class="form-control" [value]="KTPlanName" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <a href="/TeamsOverview" class="btn btn-warning" style="float: left;"> &laquo; Back</a>
+            <button type="submit" class="btn btn-primary" style="float: right;">Save Team</button>
         </div>
       </form>  
 </div>

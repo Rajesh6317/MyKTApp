@@ -11,7 +11,10 @@ export class AddTeamComponent implements OnInit {
   public ImageFolder: string = "src/assets/TeamImages";
   public teamLogoPath: string ="../../../assets/TeamImages/default-team-logo.png"
   public uploadedLogo : File = null;
+  public KTPlan : File =null;
+  public KTPlanName : string;
   public path : string =  "/AddTeam";
+  public hideKTPlanName : boolean = true;
   constructor(private addTeam : MyKTAppServiceService) { }
   
   ngOnInit() {
@@ -77,9 +80,15 @@ export class AddTeamComponent implements OnInit {
     reader.readAsDataURL(this.uploadedLogo);
   }
 
+  public displayFile(file:FileList){
+    this.KTPlan = file.item(0);
+    this.KTPlanName = this.KTPlan.name;
+    this.hideKTPlanName = false;
+  }
+
   public onSave(teamFullName, teamAbbreviatedName, teamLogo, teamDescription){
     const description = teamDescription._editor.contentDocument.activeElement.innerHTML ;
-    this.addTeam.postFile(teamFullName.value,teamAbbreviatedName.value,this.uploadedLogo,description)
+    this.addTeam.addTeam(teamFullName.value,teamAbbreviatedName.value,this.uploadedLogo,description, this.KTPlan)
     .subscribe( data => {alert('Team Details Saveed Successfully');
     window.location.href = '/TeamsOverview';
   });

@@ -26,5 +26,6 @@ namespace MyKTAppWebAPI.Models
         }
     
         public virtual DbSet<TEAM> TEAMs { get; set; }
+        public virtual DbSet<CONTENT> CONTENTs { get; set; }
     }
 }

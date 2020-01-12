@@ -19,5 +19,7 @@ namespace MyKTAppWebAPI.Models
         public string TEAM_ABBREVIATED_NAME { get; set; }
         public string TEAM_LOGO_PATH { get; set; }
         public string TEAM_DESCRIPTION { get; set; }
+        public string TEAM_KT_PLAN_PATH { get; set; }
+        public string UPDATED_BY { get; set; }
     }
 }
