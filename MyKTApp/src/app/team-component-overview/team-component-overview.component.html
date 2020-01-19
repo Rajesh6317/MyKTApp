@@ -1,1 +1,13 @@
-<p>team-component-overview works!</p>
+<div class="container">
+    <div class="jumbotron">Select the Team to learn more about its Components...</div>
+    <hr>
+    <div class="item" *ngFor="let teamDetail of getTeamsService.listTeams; let i = index" (click)="listTeamComponents(teamDetail)">
+        <a> <img  onerror="this.onerror=null;this.src = '../../assets/noImageAvailable.jpg';"   src="http://localhost:49355/MyKTAppWebAPI/Common/Images/TeamLogo/{{teamDetail.TEAM_LOGO_PATH}}" alt=""></a>
+        <span class="caption">{{teamDetail.TEAM_ABBREVIATED_NAME}}</span>
+    </div>
+    <hr>    
+    <div class=" row row-md-2">
+        <a class="btn btn-primary btn-lg btn-block" style="float: right;" href="/AddNewComponent">+ Add New Component</a>
+    </div>
+    <br>
+</div>

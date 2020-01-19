@@ -7,6 +7,8 @@ import { HomeAboutComponent } from './home-about/home-about.component';
 import { UpdateTeamComponent } from './teams-overview/update-team/update-team.component';
 import { ClaimsOverviewComponent } from './claims-overview/claims-overview.component';
 import { UpdateClaimsOverviewComponent } from './claims-overview/update-claims-overview/update-claims-overview.component';
+import {TeamComponentOverviewComponent} from './team-component-overview/team-component-overview.component';
+import {AddNewComponentComponent} from './team-component-overview/add-new-component/add-new-component.component';
 
 const routes: Routes = [
     {path:'', redirectTo:'/Home', pathMatch:'full'},
@@ -17,6 +19,8 @@ const routes: Routes = [
     {path:'UpdateTeam/:id', component:UpdateTeamComponent},
     {path: 'ClaimsOverview', component:ClaimsOverviewComponent},
     {path: 'UpdateClaimsOverview', component:UpdateClaimsOverviewComponent},
+    {path: 'TeamComponents', component:TeamComponentOverviewComponent},
+    {path: 'AddNewComponent', component:AddNewComponentComponent},
 ];
 
 @NgModule({
@@ -32,4 +36,5 @@ export const routingComponents = [
     AddTeamComponent,
     UpdateTeamComponent,
     ClaimsOverviewComponent,
-    UpdateClaimsOverviewComponent]
+    UpdateClaimsOverviewComponent,
+    TeamComponentOverviewComponent]

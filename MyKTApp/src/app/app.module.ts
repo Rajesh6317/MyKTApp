@@ -22,7 +22,9 @@ import { UpdateClaimsOverviewComponent } from './claims-overview/update-claims-o
 import { TeamComponentOverviewComponent } from './team-component-overview/team-component-overview.component';
 import { TeamComponentListComponent } from './team-component-overview/team-component-list/team-component-list.component';
 import { TeamComponentDetailComponent } from './team-component-overview/team-component-detail/team-component-detail.component';
-import { UpdateTeamComponentDetailComponent } from './team-component-overview/update-team-component-detail/update-team-component-detail.component'
+import { UpdateTeamComponentDetailComponent } from './team-component-overview/update-team-component-detail/update-team-component-detail.component';
+import { AddNewComponentComponent } from './team-component-overview/add-new-component/add-new-component.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,9 @@ import { UpdateTeamComponentDetailComponent } from './team-component-overview/up
     TeamComponentOverviewComponent,
     TeamComponentListComponent,
     TeamComponentDetailComponent,
-    UpdateTeamComponentDetailComponent
+    UpdateTeamComponentDetailComponent,
+    AddNewComponentComponent,
+    
   ],
   imports: [
     BrowserModule,

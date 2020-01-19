@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="jumbotron">
+        Add Details for the new Component...
+    </div>
+    <form #teamForm = ngForm (ngSubmit)="onSave(teamSelected,componentName,componentDescription)">
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-2">
+                    <label for="teamSelected">Select Team</label>
+                </div>
+                <div class="col col-md-9">
+                    <select ngModel #teamSelected class="form-control" id="teamSelected" name="teamSelected" required>
+                        <option *ngFor="let team of teamList" [value]="team.TEAM_ID">
+                            {{team.TEAM_ABBREVIATED_NAME}}
+                        </option>
+                    </select>
+                    <small id="teamSelectedHelp" class="form-text text-muted">Please select the Team this component belongs to</small>
+                </div>
+            </div>    
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-2">
+                    <label for="componentName">Component Name</label>
+                </div>
+                <div class="col col-md-9">
+                    <input #componentName ngModel type="text" class="form-control" id="componentName" name="componentName" placeholder="Example: Claim Contacts" required>
+                    <small id="componentName" class="form-text text-muted">Please Enter Components Name</small>
+                </div>
+            </div>            
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="componentDescription">Quick Overview about Component</label><br>
+            <editor id="componentDescription" #componentDescription [init]="tinymceInit"></editor>
+        </div>
+        <br>
+        <hr>
+        <div class="form-group">
+            <div class="row">
+                <label for="UploadDocuments">Manage Documents</label>
+                <label class="btn btn-success" style="float:right"> + Add New Document <input type="file" (change)="uploadDocument($event.target.files)" hidden> </label><br><br>
+            </div>
+            <div >
+                <div class="row" *ngFor="let doc of documentList">
+                    <div class="col col-md-11">
+                        <input type="text" disabled="true" class="form-control" [value]="doc">
+                    </div>
+                    <div class="col col-md-1">
+                        <a class="btn btn-danger" (click)="removeFile(doc)">X</a>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <a href="/TeamComponents" class="btn btn-warning" style="float: left;"> &laquo; Back</a>
+            <button type="submit" class="btn btn-primary" style="float: right;">Save Component</button>
+        </div>
+      </form>  
+</div>

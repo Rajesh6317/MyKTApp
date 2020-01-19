@@ -37,7 +37,7 @@ export class MyKTAppServiceService {
 
   public getTeams(){
     const endpoint = this.webAPIEndpoint + "api/GetTeams";
-    this.http.get(endpoint)
+    return this.http.get(endpoint)
     .toPromise().then(response => this.listTeams = response as TeamDetails[]);
   }
 
@@ -70,3 +70,4 @@ export class MyKTAppServiceService {
     return this.http.post(endpoint,formData);
   }
 }
+//  public addComponent()

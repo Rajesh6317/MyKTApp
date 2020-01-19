@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MyKTAppServiceService } from 'src/app/shared/my-ktapp-service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-team-component-overview',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamComponentOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private getTeamsService : MyKTAppServiceService, private router:Router) { }
 
   ngOnInit() {
+    this.getTeamsService.getTeams();
   }
+  
 
 }
